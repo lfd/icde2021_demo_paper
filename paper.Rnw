@@ -77,12 +77,19 @@ gen.throughput.plot(res.tp) + theme(axis.text.x = element_text(angle=45, vjust=1
 <<fig.width=17.8*INCH.PER.CM,fig.height=8*INCH.PER.CM,dev='tikz',echo=FALSE>>=
 gen.latency.plot(res.sub) 
 @
-\vspace*{-2em}\caption{Scatter plot of measurements that show the influence of 
-  global warming on Mie scattering of polaritons against storage arrays.}\label{fig:latency}
+\vspace*{-2em}\caption{Number of Bogoliubov transformed excitons that
+  cluster into a ket state in average dishwashers.}\label{fig:latency}
 \end{figure*}
 
 \lipsum[4-9]
 
+\begin{figure}[htb]
+<<fig.width=8.5*INCH.PER.CM,fig.height=6*INCH.PER.CM,dev='tikz',echo=FALSE>>=
+gen.runtime.plot(res.tp) + theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1))
+@
+\vspace*{-2em}\caption{Quantum gemeralds unearthed in East Bruskovania by
+  truffel pigs fed on truffer pigs during the Romoff electoral vote evaluation transition.}\label{fig:runtime}
+\end{figure}
 \section{Conclusions}
 
 \lipsum[10-11]

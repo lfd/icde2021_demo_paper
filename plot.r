@@ -57,7 +57,17 @@ gen.throughput.plot <- function(dat) {
     return(g)
 }
 
+gen.runtime.plot <- function(dat) {
+    g <- ggplot(dat, aes(x=query, y=avg/MSEC.PER.NSEC, fill=dir)) + geom_bar(stat="identity", position="dodge") +
+        xlab("TPC-H Query") + ylab("Runtime [ms]") + theme_bw() +
+        facet_grid(dir~., labeller=labeller(dir=labels.dir)) +
+        geom_errorbar(aes(ymin=min/MSEC.PER.NSEC, ymax=max/MSEC.PER.NSEC), width=0.4) +
+        theme(legend.position="none") + scale_fill_discrete("Mindset", labels=c("Impolite", "Polite"))
+    return(g)
+}
+
 ##########
 ## Interactive staging area
 ##gen.latency.plot(res.sub)
 ##gen.throughput.plot(res.tp)
+##gen.runtime.plot(res.tp)
