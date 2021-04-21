@@ -1,0 +1,92 @@
+%Rscript -e "require ('knitr'); knit ('paper.Rnw')"
+\PassOptionsToPackage{british}{babel}
+\PassOptionsToPackage{expansion,protrusion}{microtype}
+\PassOptionsToPackage{colorlinks=true, urlcolor=blue, linkcolor=blue,
+                      anchorcolor=blue}{hyperref}
+\documentclass[sigconf,review,natbib=false]{acmart}
+\usepackage{lipsum}
+\usepackage[style=ACM-Reference-Format,backend=biber,sorting=none,
+            doi=true, url=false, isbn=false]{biblatex}
+\addbibresource{literature.bib}
+\acmConference[SEPP’21]{Super Elastic Petabyte Processing Conference}{August 23--27}{Athens, Greece}
+
+\begin{document}
+\title[]{Determining the Weight of a Petabyte of Cat Images}
+\author{Wolfgang Mauerer}
+\affiliation{
+  \institution{Technical University of Applied Science Regensburg}
+  \institution{Siemens AG, Corporate Research}
+  \city{Regensburg/Munich}
+  \country{Germany}}
+\email{wolfgang.mauerer@othr.de}
+
+\author{Stefanie Scherzinger}
+\affiliation{
+  \institution{University of Passau}
+  \city{Passau}
+  \country{Germany}}
+\email{stefanie.scherzinger@uni-passau.de}
+
+
+<<setup,include=FALSE,echo=FALSE>>=
+library(knitr)
+library(xtable)
+library(ggplot2)
+library(tikzDevice)
+INCH.PER.CM <- 1/2.54
+options(tikzMetricPackages = c("\\usepackage[utf8]{inputenc}",
+    "\\usepackage{fontenc}", "\\usetikzlibrary{calc}"),
+    tikzDefaultEngine="pdftex")
+theme_set(theme_bw())
+theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
+             plot.background = element_rect(fill = "transparent", colour = NA))
+knitr::opts_chunk$set( 
+  echo=FALSE, fig.path='plots/plot-', cache=TRUE, warning=FALSE,
+  dev.args=list(bg="transparent")
+)
+@
+
+<<<read-data,cache=TRUE,include=FALSE,echo=FALSE>>=
+source("plot.r")
+@
+
+\begin{abstract}
+  We address the question of how to measure the weight of a petabyte worth of
+  random noise in metric units. \lipsum[42]
+\end{abstract}
+
+\maketitle 
+
+\section{Introduction}
+\lipsum[1][1-2]
+
+\section{Results}
+\lipsum[2][1-5]
+
+\begin{figure}[htb]
+<<fig.width=8.5*INCH.PER.CM,fig.height=6*INCH.PER.CM,dev='tikz',echo=FALSE>>=
+gen.throughput.plot(res.tp) + theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1))
+@
+\vspace*{-2em}\caption{Scatter plot of measurements that show the influence of
+  global warming on Mie scattering of polaritons against storage arrays.}\label{fig:throughput}
+\end{figure}
+
+\lipsum[3][1-10]
+
+\begin{figure*}[htb]
+<<fig.width=17.8*INCH.PER.CM,fig.height=8*INCH.PER.CM,dev='tikz',echo=FALSE>>=
+gen.latency.plot(res.sub) 
+@
+\vspace*{-2em}\caption{Scatter plot of measurements that show the influence of 
+  global warming on Mie scattering of polaritons against storage arrays.}\label{fig:latency}
+\end{figure*}
+
+\lipsum[4-9]
+
+\section{Conclusions}
+
+\lipsum[10-11]
+
+\nocite{*}
+\printbibliography
+\end{document}
