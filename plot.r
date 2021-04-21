@@ -38,10 +38,9 @@ res.tp$query <- factor(res.tp$query, levels=sort(unique(res.tp$query)), labels=s
 
 ########
 ## Create visualisations
-
 gen.latency.plot <- function(dat) {
-    g <- ggplot(dat, aes(x=time/SEC.PER.NSEC, y=latency/MSEC.PER.NSEC, colour=dir)) + geom_point(size=0.5) +
-        geom_line() + xlab("Time [s]") + ylab("Latency [ms]") + theme_bw() +
+    g <- ggplot(dat, aes(x=id, y=latency/MSEC.PER.NSEC, colour=dir)) + geom_point(size=0.5) +
+        geom_line() + xlab("Iteration") + ylab("Latency [ms]") + theme_bw() +
         facet_wrap(query~., scales="free") +
         theme(legend.position="top") + scale_colour_discrete("Mindset", labels=c("Impolite", "Polite"))
     return(g)
