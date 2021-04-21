@@ -1,0 +1,6 @@
+plots/
+cache/
+*~
+paper-tikzDictionary
+.*
+paper.tex
